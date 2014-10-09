@@ -3,6 +3,9 @@ Go File Cache
 
 This package provides easy to use, file system cache functions.
 
+Full documentation is at:
+[godoc.org/github.com/DannyBen/filecache](http://godoc.org/github.com/DannyBen/filecache)
+
 Install
 -------
 
