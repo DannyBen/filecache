@@ -19,12 +19,12 @@ type Handler struct {
 
 // Set saves content to the cache
 func (h Handler) Set(key string, data []byte) error {
-	return ioutil.WriteFile(h.filename(key), data, 0644)
+	return ioutil.WriteFile(h.Filename(key), data, 0644)
 }
 
 // Get returns content from the cache
 func (h Handler) Get(key string) []byte {
-	file := h.filename(key)
+	file := h.Filename(key)
 	result, err := ioutil.ReadFile(file)
 	if err != nil {
 		return nil
@@ -40,8 +40,8 @@ func (h Handler) Get(key string) []byte {
 	return result
 }
 
-// filename returns the full path to the cache file
-func (h Handler) filename(key string) string {
+// Filename returns the full path to the cache file
+func (h Handler) Filename(key string) string {
 	return h.dir() + "/" + hash(key)
 }
 
