@@ -1,6 +1,9 @@
 Go File Cache
 =============
 
+[![Build Status](https://travis-ci.org/DannyBen/filecache.svg?branch=master)](https://travis-ci.org/DannyBen/filecache) [![GoDoc](https://godoc.org/github.com/DannyBen/filecache?status.png)](http://godoc.org/github.com/DannyBen/filecache)
+
+
 This package provides easy to use, file system cache functions.
 
 Full documentation is at:
