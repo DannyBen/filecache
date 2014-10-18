@@ -7,6 +7,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/user"
+	"strings"
 	"time"
 )
 
@@ -53,6 +55,7 @@ func (h Handler) dir() string {
 		return h.Dir
 	}
 
+	h.Dir = resolveHomeDir(h.Dir)
 	yes, err := exists(h.Dir)
 	panicon(err)
 	if !yes {
@@ -79,6 +82,18 @@ func exists(path string) (bool, error) {
 		return false, nil
 	}
 	return false, err
+}
+
+// resolveHomeDir replaces ~ with the users home directory
+func resolveHomeDir(path string) string {
+	if strings.HasPrefix(path, "~") {
+		usr, err := user.Current()
+		if err != nil {
+			return path
+		}
+		return usr.HomeDir + strings.TrimPrefix(path, "~")
+	}
+	return path
 }
 
 func panicon(err error) {
