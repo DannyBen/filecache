@@ -56,7 +56,7 @@ func (h Handler) dir() string {
 	yes, err := exists(h.Dir)
 	panicon(err)
 	if !yes {
-		err := os.MkdirAll(h.Dir, 0666)
+		err := os.MkdirAll(h.Dir, 0766)
 		panicon(err)
 	}
 	return h.Dir
